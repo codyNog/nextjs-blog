@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { fetchCocPosts } from "~/data/apis/coc/fetchCocPosts";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
 
 export default function Home({ blog }) {
@@ -18,7 +19,7 @@ export default function Home({ blog }) {
 }
 
 export const getStaticProps = async () => {
-  const data = await fetchBlogPosts();
+  const data = await fetchCocPosts();
 
   return {
     props: {
