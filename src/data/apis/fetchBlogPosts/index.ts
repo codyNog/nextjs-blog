@@ -1,10 +1,10 @@
 import { CMS_API_KEY, CMS_ROOT } from "~/constants/apis";
+import { Blog } from "~/types/blog";
+import { CMSClient } from "../CMSClient";
 
-export const fetchBlogPosts = async () => {
-  const key = {
-    headers: { "X-API-KEY": CMS_API_KEY },
-  };
+export const fetchBlogPosts = async (): Promise<Blog[]> => {
+  const res = await CMSClient("/blog");
+  const { contents } = res;
 
-  const res = await fetch(`${CMS_ROOT}/blog`, key);
-  return res.json();
+  return contents;
 };

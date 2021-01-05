@@ -1,14 +1,18 @@
 import Link from "next/link";
-import { fetchCocPosts } from "~/data/apis/coc/fetchCocPosts";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
+import { Blog } from "~/types/blog";
 
-export default function Home({ blog }) {
+interface Props {
+  blog: Blog[];
+}
+
+export default function Home({ blog }: Props) {
   return (
     <div>
       <ul>
         {blog.map((blog) => (
           <li key={blog.id}>
-            <Link href={`blog/${blog.id}`}>
+            <Link href={`/blog/${blog.id}`}>
               <a>{blog.title}</a>
             </Link>
           </li>
@@ -19,11 +23,11 @@ export default function Home({ blog }) {
 }
 
 export const getStaticProps = async () => {
-  const data = await fetchCocPosts();
+  const data = await fetchBlogPosts();
 
   return {
     props: {
-      blog: data.contents,
+      blog: data,
     },
   };
 };

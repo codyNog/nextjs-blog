@@ -5,6 +5,6 @@ export const CMSClient = async (uri: string) => {
     headers: { "X-API-KEY": CMS_API_KEY },
   };
 
-  const res = await fetch(`${CMS_ROOT}${uri}`, key);
-  return res.json();
+  const res = await (await fetch(`${CMS_ROOT}${uri}`, key)).json();
+  return res;
 };

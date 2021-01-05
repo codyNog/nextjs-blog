@@ -1,7 +1,12 @@
 import { fetchBlogPost } from "~/data/apis/fetchBlogPost";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
+import { Blog } from "~/types/blog";
 
-export default function BlogId({ blog }) {
+interface Props {
+  blog: Blog;
+}
+
+export default function BlogId({ blog }: Props) {
   return (
     <main>
       <h1>{blog.title}</h1>
@@ -17,7 +22,7 @@ export default function BlogId({ blog }) {
 
 export const getStaticPaths = async () => {
   const data = await fetchBlogPosts();
-  const paths = data.contents.map((content) => `/blog/${content.id}`);
+  const paths = data.map((content) => `/blog/${content.id}`);
   return { paths, fallback: false };
 };
 
