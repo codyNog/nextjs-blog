@@ -4,7 +4,6 @@ import { CMSClient } from "../CMSClient";
 
 export const fetchBlogPost = async (id: string): Promise<Blog> => {
   const res = await CMSClient(`/blog/${id}`);
-  const { contents } = res;
 
-  return contents;
+  return res;
 };

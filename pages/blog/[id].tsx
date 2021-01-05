@@ -28,7 +28,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const data = await fetchBlogPost(id);
+  const data = await fetchBlogPost(id).catch(() => null);
   return {
     props: {
       blog: data,
