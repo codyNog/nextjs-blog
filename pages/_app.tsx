@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title key={"title"}>codyNog's Labo</title>
-        <meta name="description">codyNog's Labo</meta>
+        <meta name="description" content={"codyNog's Labo"} />
       </Head>
       <Component {...pageProps} />
     </>
