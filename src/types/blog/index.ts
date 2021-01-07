@@ -4,6 +4,6 @@ export interface Blog {
   updatedAt: string;
   publishedAt: string;
   title: string;
-  tag: string[];
+  tags: string[];
   body: string;
 }
