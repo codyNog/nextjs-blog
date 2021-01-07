@@ -33,7 +33,9 @@ export default function Home({ blog }: Props) {
                 <h2>{blog.title}</h2>
                 <Flex>
                   {blog.tags.map((tag) => (
-                    <Tag mr={"auto"}>{tag}</Tag>
+                    <Tag key={tag} mr={"auto"}>
+                      {tag}
+                    </Tag>
                   ))}
                   <p>{dayjs(blog.createdAt).format("YYYY/MM/DD")}</p>
                 </Flex>
