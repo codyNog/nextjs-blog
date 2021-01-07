@@ -1,4 +1,4 @@
-import { Box, Flex, StyledStepper, Tag } from "@chakra-ui/react";
+import { Box, Flex, Tag } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import dayjs from "dayjs";
 import Link from "next/link";
