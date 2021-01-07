@@ -1,0 +1,18 @@
+p {
+}
+
+br {
+  height: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}

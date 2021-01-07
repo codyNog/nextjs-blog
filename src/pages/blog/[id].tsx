@@ -1,22 +1,31 @@
+import { Layout } from "~/components/templates/layouts";
 import { fetchBlogPost } from "~/data/apis/fetchBlogPost";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
 import { Blog } from "~/types/blog";
+import { Box } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 
 interface Props {
   blog: Blog;
 }
 
+const Body = styled.div({
+  marginTop: 20,
+});
+
 export default function BlogId({ blog }: Props) {
   return (
-    <main>
-      <h1>{blog.title}</h1>
-      <p>{blog.publishedAt}</p>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
-        }}
-      />
-    </main>
+    <Layout>
+      <Box borderWidth={"1px"} borderRadius={"lg"} padding={"16px"}>
+        <h1>{blog.title}</h1>
+        <p>{blog.publishedAt}</p>
+        <Body
+          dangerouslySetInnerHTML={{
+            __html: `${blog.body}`,
+          }}
+        />
+      </Box>
+    </Layout>
   );
 }
 
