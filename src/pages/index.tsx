@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { Summary } from "~/components/molecules/Summary";
 import { Layout } from "~/components/templates/layouts";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
@@ -7,15 +6,6 @@ import { Blog } from "~/types/blog";
 interface Props {
   blog: Blog[];
 }
-
-const Li = styled.li<{ isTop?: boolean }>(({ isTop }) => ({
-  marginTop: isTop ? 0 : 16,
-  cursor: "pointer",
-}));
-
-const A = styled.a({
-  textDecoration: "none",
-});
 
 export default function Home({ blog }: Props) {
   return (
