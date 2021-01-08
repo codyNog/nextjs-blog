@@ -7,8 +7,21 @@ const StyledOuter = styled(Outer)({
   color: "white",
   padding: "0 4px",
   borderRadius: 4,
+  outline: "none",
 });
 
-export const Tag: React.FC<StyleProps> = ({ children, style }) => {
-  return <StyledOuter styleProps={style}>{children}</StyledOuter>;
+interface Props extends StyleProps {
+  onClick?: () => void;
+}
+
+export const Tag: React.FC<Props> = ({ onClick, children, style }) => {
+  return (
+    <StyledOuter
+      as={onClick ? "button" : "div"}
+      onClick={onClick}
+      styleProps={style}
+    >
+      {children}
+    </StyledOuter>
+  );
 };
