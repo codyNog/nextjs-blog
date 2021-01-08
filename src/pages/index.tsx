@@ -1,7 +1,5 @@
-import { Box, Flex, Tag } from "@chakra-ui/react";
 import styled from "@emotion/styled";
-import dayjs from "dayjs";
-import Link from "next/link";
+import { Summary } from "~/components/molecules/Summary";
 import { Layout } from "~/components/templates/layouts";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
 import { Blog } from "~/types/blog";
@@ -15,33 +13,20 @@ const Li = styled.li<{ isTop?: boolean }>(({ isTop }) => ({
   cursor: "pointer",
 }));
 
+const A = styled.a({
+  textDecoration: "none",
+});
+
 export default function Home({ blog }: Props) {
   return (
     <Layout>
       <ul>
         {blog.map((blog, i) => (
-          <Li key={blog.id} isTop={!i}>
-            <Link href={`/blog/${blog.id}`}>
-              <Box
-                borderWidth={"1px"}
-                borderRadius={"lg"}
-                width={"100%"}
-                p={4}
-                as={"a"}
-                display={"block"}
-              >
-                <h2>{blog.title}</h2>
-                <Flex>
-                  {blog.tags.map((tag) => (
-                    <Tag key={tag} mr={"auto"}>
-                      {tag}
-                    </Tag>
-                  ))}
-                  <p>{dayjs(blog.createdAt).format("YYYY/MM/DD")}</p>
-                </Flex>
-              </Box>
-            </Link>
-          </Li>
+          <Summary
+            key={blog.id}
+            blog={blog}
+            style={{ marginTop: !i ? 0 : 16 }}
+          />
         ))}
       </ul>
     </Layout>

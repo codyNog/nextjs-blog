@@ -5,4 +5,10 @@ interface Props {
   styleProps?: object;
 }
 
+export interface StyleProps {
+  style?: object;
+}
+
 export const Outer = styled.div<Props>(({ styleProps }) => ({ ...styleProps }));
+
+export const Flex = styled(Outer)({ display: "flex", alignItems: "center" });
