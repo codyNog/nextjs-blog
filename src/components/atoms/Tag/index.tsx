@@ -8,13 +8,34 @@ const StyledOuter = styled(Outer)({
   padding: "0 4px",
   borderRadius: 4,
   outline: "none",
+  fontSize: 20,
+});
+
+const Negative = styled(StyledOuter)({
+  backgroundColor: "white",
+  color: "black",
 });
 
 interface Props extends StyleProps {
   onClick?: () => void;
 }
 
-export const Tag: React.FC<Props> = ({ onClick, children, style }) => {
+const tagFactory = (type?: string): React.FC<Props> => ({
+  onClick,
+  children,
+  style,
+}) => {
+  if (type === "negative")
+    return (
+      <Negative
+        as={onClick ? "button" : "div"}
+        onClick={onClick}
+        styleProps={style}
+      >
+        {children}
+      </Negative>
+    );
+
   return (
     <StyledOuter
       as={onClick ? "button" : "div"}
@@ -25,3 +46,7 @@ export const Tag: React.FC<Props> = ({ onClick, children, style }) => {
     </StyledOuter>
   );
 };
+
+export const Tag = tagFactory();
+
+export const NegativeTag = tagFactory("negative");

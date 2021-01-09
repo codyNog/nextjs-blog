@@ -1,6 +1,5 @@
-import styled from "@emotion/styled";
 import { useState } from "react";
-import { Tag } from "~/components/atoms/Tag";
+import { NegativeTag, Tag } from "~/components/atoms/Tag";
 import { Summary } from "~/components/molecules/Summary";
 import { Layout } from "~/components/templates/layouts";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
@@ -10,8 +9,6 @@ import { Blog } from "~/types/blog";
 interface Props {
   blog: Blog[];
 }
-
-const Tags = styled(Flex)({});
 
 const allTags = (blog: Blog[]) => {
   let array: string[] = [];
@@ -31,14 +28,26 @@ export default function Home({ blog }: Props) {
     <Layout>
       <Flex styleProps={{ marginBottom: 16 }}>
         タグ絞り込み
-        <Tags>
-          {allTags(blog).map((elem) => (
-            <Tag onClick={() => setValue(elem)} key={elem}>
-              {elem}
-            </Tag>
-          ))}
-          <Tag onClick={() => setValue("")}>クリア</Tag>
-        </Tags>
+        <Flex>
+          {allTags(blog).map((elem) => {
+            if (!value || (value && elem === value))
+              return (
+                <Tag
+                  onClick={() => setValue(elem)}
+                  key={elem}
+                  style={{ marginLeft: 4 }}
+                >
+                  {elem}
+                </Tag>
+              );
+            return null;
+          })}
+          {value && (
+            <NegativeTag onClick={() => setValue("")} style={{ marginLeft: 4 }}>
+              クリア
+            </NegativeTag>
+          )}
+        </Flex>
       </Flex>
       <ul>
         {filterBlog(blog, value).map((blog, i) => (
