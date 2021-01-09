@@ -17,9 +17,10 @@ const filterBlog = (blog: Blog[], value: string) => {
 
 interface Props {
   blog: Blog[];
+  link: string;
 }
 
-export const BlogFeed: React.FC<Props> = ({ blog }) => {
+export const BlogFeed: React.FC<Props> = ({ blog, link }) => {
   const [value, setValue] = useState("");
 
   return (
@@ -50,6 +51,7 @@ export const BlogFeed: React.FC<Props> = ({ blog }) => {
       <ul>
         {filterBlog(blog, value).map((blog, i) => (
           <Summary
+            link={link}
             key={blog.id}
             blog={blog}
             style={{ marginTop: !i ? 0 : 16 }}

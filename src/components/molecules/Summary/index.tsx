@@ -8,6 +8,7 @@ import { Flex, Outer, StyleProps } from "~/libs/styled";
 import { Blog } from "~/types/blog";
 
 interface Props extends StyleProps {
+  link: string;
   blog: Blog;
 }
 
@@ -23,10 +24,10 @@ const Tags = styled.div({
   marginLeft: "auto",
 });
 
-export const Summary: React.FC<Props> = ({ blog, style }) => {
+export const Summary: React.FC<Props> = ({ link, blog, style }) => {
   return (
     <Li key={blog.id} styleProps={style}>
-      <Link href={`/blog/${blog.id}`}>
+      <Link href={`${link}/${blog.id}`}>
         <A>
           <Card>
             <h2>{blog.title}</h2>

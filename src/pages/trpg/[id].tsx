@@ -8,7 +8,7 @@ interface Props {
   blog: Blog;
 }
 
-export default function BlogId({ blog }: Props) {
+export default function Component({ blog }: Props) {
   return (
     <Layout>
       <BlogPost blog={blog} />
@@ -18,7 +18,7 @@ export default function BlogId({ blog }: Props) {
 
 export const getStaticPaths = async () => {
   const data = await fetchBlogPosts();
-  const paths = data.map((content) => `/blog/${content.id}`);
+  const paths = data.map((content) => `/trpg/${content.id}`);
   return { paths, fallback: false };
 };
 
