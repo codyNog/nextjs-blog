@@ -9,9 +9,11 @@ const StyledOuter = styled(Outer)({
 });
 
 const Main = styled.main({
+  flex: 1,
   maxWidth: 960,
   padding: "16px 12px",
   margin: "0 auto",
+  overflow: "scroll",
 });
 
 export const Layout: React.FC = ({ children }) => {
