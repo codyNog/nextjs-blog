@@ -3,7 +3,6 @@ import { fetchBlogPost } from "~/data/apis/fetchBlogPost";
 import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
 import { Blog } from "~/types/blog";
 import { BlogPost } from "~/components/organisms/BlogPost";
-import { BASE_URL } from "~/constants/apis";
 
 interface Props {
   blog: Blog;
@@ -19,7 +18,7 @@ export default function BlogId({ blog }: Props) {
 
 export const getStaticPaths = async () => {
   const data = await fetchBlogPosts();
-  const paths = data.map((content) => `${BASE_URL}/blog/${content.id}`);
+  const paths = data.map((content) => `/blog/${content.id}`);
   return { paths, fallback: false };
 };
 
