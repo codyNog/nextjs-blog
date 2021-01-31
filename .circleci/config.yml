@@ -42,6 +42,7 @@ jobs:
       - <<: *node_install_packages
       - <<: *save_cache
       - run: yarn lint
+      - run: yarn test
   generate:
     docker:
       - image: *node_image
