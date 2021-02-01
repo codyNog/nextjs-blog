@@ -68,7 +68,7 @@ jobs:
           at: out
       - gcp-cli/install
       - gcp-cli/initialize
-      - run: gsutil cp -r out/ gs://codynog.com/
+      - run: gsutil cp -r out/* gs://codynog.com/
 
 orbs:
   node: circleci/node@4.1.0
