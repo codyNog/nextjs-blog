@@ -66,7 +66,8 @@ jobs:
     steps:
       - attach_workspace:
           at: out
-      - run: gcp-cli/install_and_initialize_cli
+      - gcp-cli/install
+      - gcp-cli/initialize
       - run: gsutil cp -r out/ gs://codynog.com/
 
 orbs:
