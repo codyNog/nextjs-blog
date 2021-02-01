@@ -58,6 +58,7 @@ jobs:
       - image: google/cloud-sdk
     steps:
       - checkout
+      - run: curl https://circleci.com/api/v1.1/project/github/codyNog/nextjs-blog/latest/artifacts?circle-token=$CIRCLE_TOKEN
       - run: gsutil cp out/ gs://codynog.com/
 
 orbs:
@@ -68,10 +69,11 @@ workflows:
   test_my_app:
     jobs:
       - test
-      - generate
-      - deploy:
+      - generate:
           requires:
             - test
+      - deploy:
+          requires:
             - generate
           filters:
             tags:
