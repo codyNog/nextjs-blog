@@ -51,14 +51,20 @@ jobs:
       - <<: *restore_cache
       - <<: *node_install_packages
       - run: yarn generate
-      - store_artifacts:
-          path: /out
+      - persist_to_workspace:
+          root: out
+          paths:
+            - out
   deploy:
     docker:
       - image: google/cloud-sdk
     steps:
       - checkout
-      - run: gsutil cp /out gs://codynog.com/
+      - gcp-cli/initialize
+      - gcp-cli/install
+      - attach_workspace:
+          at: out
+      - run: gsutil cp out/* gs://codynog.com/
 
 orbs:
   node: circleci/node@4.1.0
