@@ -52,13 +52,13 @@ jobs:
       - <<: *node_install_packages
       - run: yarn generate
       - store_artifacts:
-          path: /out
+          path: out/
   deploy:
     docker:
       - image: google/cloud-sdk
     steps:
       - checkout
-      - run: gsutil cp /out gs://codynog.com/
+      - run: gsutil cp out/ gs://codynog.com/
 
 orbs:
   node: circleci/node@4.1.0
