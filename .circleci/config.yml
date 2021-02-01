@@ -66,6 +66,7 @@ jobs:
     steps:
       - attach_workspace:
           at: out
+      - run: gcp-cli/install_and_initialize_cli
       - run: gsutil cp -r out/ gs://codynog.com/
 
 orbs:
@@ -76,11 +77,10 @@ workflows:
   test_my_app:
     jobs:
       - test
-      - generate:
-          requires:
-            - test
+      - generate
       - deploy:
           requires:
+            - test
             - generate
           filters:
             tags:
