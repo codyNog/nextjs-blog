@@ -26,7 +26,7 @@ executors:
   default:
     docker:
       - image: *node_image
-  generate_and_deploy:
+  deploy:
     docker:
       - image: google/cloud-sdk
 
@@ -58,11 +58,11 @@ jobs:
       - <<: *node_install_packages
       - run: yarn generate
       - persist_to_workspace:
-          root: .
+          root: out
           paths:
-            - out/
-  generate_and_deploy:
-    executor: generate_and_deploy
+            - out
+  deploy:
+    executor: deploy
     steps:
       - attach_workspace:
           at: .
@@ -79,7 +79,7 @@ workflows:
       - generate:
           requires:
             - test
-      - generate_and_deploy:
+      - deploy:
           requires:
             - generate
           filters:
