@@ -66,7 +66,7 @@ jobs:
     steps:
       - attach_workspace:
           at: out
-      - run: gsutil cp out/ gs://codynog.com/
+      - run: gsutil cp -r out/ gs://codynog.com/
 
 orbs:
   node: circleci/node@4.1.0
