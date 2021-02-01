@@ -60,12 +60,12 @@ jobs:
       - persist_to_workspace:
           root: out
           paths:
-            - out
+            - .
   deploy:
     executor: deploy
     steps:
       - attach_workspace:
-          at: .
+          at: out
       - run: gsutil cp out/ gs://codynog.com/
 
 orbs:
