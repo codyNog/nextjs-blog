@@ -52,7 +52,7 @@ jobs:
       - <<: *node_install_packages
       - run: yarn generate
       - store_artifacts:
-        path: /out
+          path: /out
   deploy:
     docker:
       - image: google/cloud-sdk
