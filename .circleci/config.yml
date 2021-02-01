@@ -58,7 +58,7 @@ jobs:
       - image: google/cloud-sdk
     steps:
       - checkout
-      - gsutil cp /out gs://codynog.com/
+      - run: gsutil cp /out gs://codynog.com/
 
 orbs:
   node: circleci/node@4.1.0
