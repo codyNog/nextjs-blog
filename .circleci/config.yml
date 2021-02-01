@@ -60,15 +60,14 @@ jobs:
       - persist_to_workspace:
           root: out
           paths:
-            - out
+            - .
   deploy:
     executor: deploy
     steps:
-      - checkout
-      - gcp-cli/initialize
-      - gcp-cli/install
       - attach_workspace:
           at: out
+      - gcp-cli/install
+      - gcp-cli/initialize
       - run: gsutil cp -r out/* gs://codynog.com/
 
 orbs:
