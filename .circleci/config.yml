@@ -22,10 +22,17 @@ anchors:
         paths:
           - ~/.cache/yarn
 
-jobs:
-  install:
+executors:
+  default:
     docker:
       - image: *node_image
+  generate_and_deploy:
+    docker:
+      - image: google/cloud-sdk
+
+jobs:
+  install:
+    executor: default
     steps:
       - checkout
       - <<: *node_install
@@ -33,8 +40,7 @@ jobs:
       - <<: *node_install_packages
       - <<: *save_cache
   test:
-    docker:
-      - image: *node_image
+    executor: default
     steps:
       - checkout
       - <<: *node_install
@@ -51,14 +57,15 @@ jobs:
       - <<: *restore_cache
       - <<: *node_install_packages
       - run: yarn generate
-      - store_artifacts:
-          path: out/
-  deploy:
-    docker:
-      - image: google/cloud-sdk
+      - persist_to_workspace:
+          root: .
+          paths:
+            - out/
+  generate_and_deploy:
+    executor: generate_and_deploy
     steps:
-      - checkout
-      - run: curl https://circleci.com/api/v1.1/project/github/codyNog/nextjs-blog/latest/artifacts?circle-token=$CIRCLE_TOKEN
+      - attach_workspace:
+          at: .
       - run: gsutil cp out/ gs://codynog.com/
 
 orbs:
@@ -72,7 +79,7 @@ workflows:
       - generate:
           requires:
             - test
-      - deploy:
+      - generate_and_deploy:
           requires:
             - generate
           filters:
