@@ -6,4 +6,7 @@ export const routing = {
   profile: {
     root: "/profile",
   },
+  contact: {
+    root: "/contact",
+  },
 };
