@@ -3,4 +3,7 @@ export const routing = {
   trpg: {
     root: "/trpg",
   },
+  profile: {
+    root: "/profile",
+  },
 };

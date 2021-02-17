@@ -15,11 +15,6 @@
   "NextPage template": {
     "prefix": "nextpage",
     "body": [
-      "import { NextPage } from 'next';",
-      "interface Props {",
-      "  // id: string",
-      "}",
-      "",
       "const Component = () => {",
       "  return ${3:(null$1)}",
       "}",
