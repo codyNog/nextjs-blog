@@ -1,9 +1,9 @@
+import { Tag } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import dayjs from "dayjs";
 import Link from "next/link";
 import React from "react";
 import { Card } from "~/components/atoms/Card";
-import { Tag } from "~/components/atoms/Tag";
 import { Flex, Outer, StyleProps } from "~/libs/styled";
 import { Blog } from "~/types/blog";
 

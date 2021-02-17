@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NegativeTag, Tag } from "~/components/atoms/Tag";
+import { Tag, TagCloseButton } from "@chakra-ui/react";
+import { useState } from "react";
 import { Summary } from "~/components/molecules/Summary";
 import { Flex } from "~/libs/styled";
 import { Blog } from "~/types/blog";
@@ -26,7 +26,7 @@ export const BlogFeed: React.FC<Props> = ({ blog, link }) => {
   return (
     <div>
       <Flex styleProps={{ marginBottom: 16 }}>
-        タグ絞り込み
+        カテゴリ絞り込み
         <Flex>
           {allTags(blog).map((elem) => {
             if (!value || (value && elem === value))
@@ -35,6 +35,7 @@ export const BlogFeed: React.FC<Props> = ({ blog, link }) => {
                   onClick={() => setValue(elem)}
                   key={elem}
                   style={{ marginLeft: 4 }}
+                  colorScheme="cyan"
                 >
                   {elem}
                 </Tag>
@@ -42,9 +43,14 @@ export const BlogFeed: React.FC<Props> = ({ blog, link }) => {
             return null;
           })}
           {value && (
-            <NegativeTag onClick={() => setValue("")} style={{ marginLeft: 4 }}>
+            <Tag
+              onClick={() => setValue("")}
+              colorScheme="red"
+              style={{ marginLeft: 4 }}
+            >
               クリア
-            </NegativeTag>
+              <TagCloseButton />
+            </Tag>
           )}
         </Flex>
       </Flex>
