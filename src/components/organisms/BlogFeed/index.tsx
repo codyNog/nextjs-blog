@@ -53,16 +53,14 @@ export const BlogFeed: React.FC<Props> = ({ blog, link }) => {
           )}
         </Flex>
       </Flex>
-      <ul>
-        {filterBlog(blog, value).map((blog, i) => (
-          <Summary
-            link={link}
-            key={blog.id}
-            blog={blog}
-            style={{ marginTop: !i ? 0 : 16 }}
-          />
-        ))}
-      </ul>
+      {filterBlog(blog, value).map((blog, i) => (
+        <Summary
+          link={link}
+          key={blog.id}
+          blog={blog}
+          style={{ marginTop: !i ? 0 : 16 }}
+        />
+      ))}
     </div>
   );
 };
