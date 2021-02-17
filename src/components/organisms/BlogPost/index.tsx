@@ -1,4 +1,3 @@
-import React from "react";
 import { Blog } from "~/types/blog";
 import dayjs from "dayjs";
 import styled from "@emotion/styled";
