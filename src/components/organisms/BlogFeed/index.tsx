@@ -1,7 +1,6 @@
-import { Tag, TagCloseButton } from "@chakra-ui/react";
+import { Flex, Tag, TagCloseButton } from "@chakra-ui/react";
 import { useState } from "react";
 import { Summary } from "~/components/molecules/Summary";
-import { Flex } from "~/libs/styled";
 import { Blog } from "~/types/blog";
 
 const allTags = (blog: Blog[]) => {
@@ -25,7 +24,7 @@ export const BlogFeed: React.FC<Props> = ({ blog, link }) => {
 
   return (
     <div>
-      <Flex styleProps={{ marginBottom: 16 }}>
+      <Flex marginBottom={2}>
         カテゴリ絞り込み
         <Flex>
           {allTags(blog).map((elem) => {

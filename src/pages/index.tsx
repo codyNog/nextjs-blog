@@ -1,16 +1,26 @@
-import { Card } from "~/components/atoms/Card";
+import { BlogFeed } from "~/components/organisms/BlogFeed";
 import { Layout } from "~/components/templates/layouts";
+import { fetchBlogPosts } from "~/data/apis/fetchBlogPosts";
+import { Blog } from "~/types/blog";
 
-export default function Component() {
+type Props = { blog: Blog[] };
+
+const Component = (props: Props) => {
   return (
     <Layout>
-      <Card>
-        このサイトはcodyNogのサイトです。
-        <br />
-        技術ブログ、TRPGシナリオ、その他日記などのコンテンツを掲載しています。
-        <br />
-        著作権の範囲内でお楽しみください。
-      </Card>
+      <BlogFeed link={"/blog"} blog={props.blog} />
     </Layout>
   );
-}
+};
+
+export const getStaticProps = async () => {
+  const data = await fetchBlogPosts();
+
+  return {
+    props: {
+      blog: data,
+    },
+  };
+};
+
+export default Component;

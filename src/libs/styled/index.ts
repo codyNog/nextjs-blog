@@ -14,5 +14,3 @@ export const Outer = styled.div<Props>(({ styleProps }) => ({
   ...styleProps,
   outline: "none",
 }));
-
-export const Flex = styled(Outer)({ display: "flex", alignItems: "center" });
