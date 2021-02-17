@@ -1,16 +1,10 @@
-import { Container } from "@chakra-ui/react";
-import styled from "@emotion/styled";
+import { Container, Flex } from "@chakra-ui/react";
+import { Footer } from "~/components/organisms/Footer";
 import { Header } from "~/components/organisms/Header";
-import { Outer } from "~/libs/styled";
-
-const StyledOuter = styled(Outer)({
-  backgroundColor: "#efefef",
-  minHeight: "100vh",
-});
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <StyledOuter>
+    <Flex flexDirection={"column"} minHeight={"100vh"}>
       <Header />
       <Container
         flex={1}
@@ -21,6 +15,7 @@ export const Layout: React.FC = ({ children }) => {
       >
         {children}
       </Container>
-    </StyledOuter>
+      <Footer />
+    </Flex>
   );
 };
