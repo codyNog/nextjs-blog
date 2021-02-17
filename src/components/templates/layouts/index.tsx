@@ -4,7 +4,7 @@ import { Header } from "~/components/organisms/Header";
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <Flex flexDirection={"column"} minHeight={"100vh"}>
+    <Flex flexDirection={"column"} minHeight={"100vh"} maxWidth={"100vw"}>
       <Header />
       <Container
         flex={1}

@@ -1,4 +1,6 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
+import Link from "next/link";
+import { routing } from "~/constants/routing";
 
 export const Footer: React.FC = () => {
   return (
@@ -9,9 +11,11 @@ export const Footer: React.FC = () => {
       as={"nav"}
     >
       <Box p={2}>
-        <Heading color={"white"} size={"md"}>
-          Profile
-        </Heading>
+        <Link href={routing.profile.root}>
+          <Heading color={"white"} size={"md"}>
+            Profile
+          </Heading>
+        </Link>
       </Box>
       <Box p={2}>
         <Heading color={"white"} size={"md"}>
