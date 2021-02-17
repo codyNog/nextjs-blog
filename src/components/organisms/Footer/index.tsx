@@ -10,22 +10,19 @@ export const Footer: React.FC = () => {
       marginTop={"auto"}
       as={"nav"}
     >
-      <Box p={2}>
+      <Box p={2} cursor={"pointer"}>
         <Link href={routing.profile.root}>
           <Heading color={"white"} size={"md"}>
             Profile
           </Heading>
         </Link>
       </Box>
-      <Box p={2}>
-        <Heading color={"white"} size={"md"}>
-          Works
-        </Heading>
-      </Box>
-      <Box p={2}>
-        <Heading color={"white"} size={"md"}>
-          Contact
-        </Heading>
+      <Box p={2} cursor={"pointer"}>
+        <Link href={routing.contact.root}>
+          <Heading color={"white"} size={"md"}>
+            Contact
+          </Heading>
+        </Link>
       </Box>
     </Flex>
   );
