@@ -6,4 +6,5 @@ export interface Blog {
   title: string;
   tags: string[];
   body: string;
+  summary?: string;
 }

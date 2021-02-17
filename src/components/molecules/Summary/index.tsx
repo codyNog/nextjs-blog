@@ -31,6 +31,7 @@ export const Summary: React.FC<Props> = ({ link, blog, style }) => {
         <A>
           <Card>
             <h2>{blog.title}</h2>
+            <p>{blog.summary}</p>
             <Flex>
               <p>{dayjs(blog.createdAt).format("YYYY/MM/DD")}</p>
               <Tags>
