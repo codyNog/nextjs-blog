@@ -2,7 +2,6 @@
   "Component template": {
     "prefix": "component",
     "body": [
-      "import React from 'react';",
       "",
       "interface Props {",
       "  // id: string",
@@ -17,7 +16,6 @@
   "NextPage template": {
     "prefix": "nextpage",
     "body": [
-      "import React from 'react';",
       "import { NextPage } from 'next';",
       "interface Props {",
       "  // id: string",

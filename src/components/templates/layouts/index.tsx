@@ -1,6 +1,5 @@
 import { Container } from "@chakra-ui/react";
 import styled from "@emotion/styled";
-import React from "react";
 import { Header } from "~/components/organisms/Header";
 import { Outer } from "~/libs/styled";
 
