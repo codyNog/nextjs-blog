@@ -30,6 +30,11 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .envrc
+.aws
+.terraform
+.terraform.lock.hcl
+.next-tf
+terraform.tfstate.backup
 
 # vercel
 .vercel
